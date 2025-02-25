@@ -1,0 +1,48 @@
+metrics:
+  counters:
+    - name: tcp_flow_tx_bytes
+      help: Total count of  TCP Tx flow
+      labels:
+        - name: local_ip
+          size: 16
+          decoders:
+            - name: inet_ip
+        - name: peer_ip
+          size: 16
+          decoders:
+            - name: inet_ip
+        - name: main_port
+          size: 2
+          decoders:
+            - name: uint
+        - name: type
+          size: 2
+          decoders:
+            - name: uint
+            - name: static_map
+              static_map:
+                2: ipv4
+                10: ipv6
+    - name: tcp_flow_rx_bytes
+      help: Total count of  TCP Rx  flow
+      labels:
+        - name: local_ip
+          size: 16
+          decoders:
+            - name: inet_ip
+        - name: peer_ip
+          size: 16
+          decoders:
+            - name: inet_ip
+        - name: main_port
+          size: 2
+          decoders:
+            - name: uint
+        - name: type
+          size: 2
+          decoders:
+            - name: uint
+            - name: static_map
+              static_map:
+                2: ipv4
+                10: ipv6
