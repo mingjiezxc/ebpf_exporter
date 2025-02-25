@@ -19,10 +19,7 @@ metrics:
           size: 2
           decoders:
             - name: uint
-            - name: static_map
-              static_map:
-                2: ipv4
-                10: ipv6
+
     - name: tcp_flow_rx_bytes
       help: Total count of  TCP Rx  flow
       labels:
@@ -42,7 +39,3 @@ metrics:
           size: 2
           decoders:
             - name: uint
-            - name: static_map
-              static_map:
-                2: ipv4
-                10: ipv6

@@ -1,0 +1,8 @@
+FROM debian:latest 
+
+COPY --from=ghcr.io/cloudflare/ebpf_exporter:latest /ebpf_exporter /ebpf_exporter
+COPY --from=ghcr.io/cloudflare/ebpf_exporter:latest /usr/share/misc/pci.ids /usr/share/misc/pci.ids
+COPY ./examples /examples
+
+
+ENTRYPOINT ["/ebpf_exporter"]

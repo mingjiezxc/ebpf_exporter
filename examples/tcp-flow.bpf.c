@@ -64,8 +64,8 @@ static int trace_event(const struct sock *sk, int size, bool is_tx)
     switch (sk->__sk_common.skc_family) {
     case AF_INET:
         key.type = AF_INET;
-        bpf_probe_read_kernel(&key.saddr, sizeof(key.saddr), sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr32);
-        bpf_probe_read_kernel(&key.daddr, sizeof(key.daddr), sk->__sk_common.skc_v6_daddr.in6_u.u6_addr32);
+        bpf_probe_read_kernel(&key.saddr, sizeof(key.saddr), &sk->__sk_common.skc_rcv_saddr);
+        bpf_probe_read_kernel(&key.daddr, sizeof(key.daddr), &sk->__sk_common.skc_daddr);
     case AF_INET6:
         key.type = AF_INET6;
         bpf_probe_read_kernel(&key.saddr, sizeof(key.saddr), sk->__sk_common.skc_v6_rcv_saddr.in6_u.u6_addr32);
